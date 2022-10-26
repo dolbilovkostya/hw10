@@ -1,0 +1,32 @@
+
+import json
+
+
+def load_candidates():
+    with open('candidates.json', 'r') as file:
+        candidates = json.load(file)
+    return candidates
+
+
+def get_all(candidates):
+    for candidate in candidates:
+        for key, value in candidate.items():
+            print(candidate[key])
+
+
+def get_by_pk(pk):
+    for candidate in load_candidates():
+        if pk == candidate['pk']:
+            print(f"pk: {candidate['pk']}")
+            print(f"Name: {candidate['name']}")
+            print(f"Picture: {candidate['picture']}")
+            print(f"Position: {candidate['position']}")
+            print(f"Gender: {candidate['gender']}")
+            print(f"Age: {candidate['age']}")
+            print(f"Skills: {candidate['skills']}")
+
+
+def get_by_skill(skill_name):
+    for candidate in load_candidates():
+        if skill_name in candidate['skills']:
+            print(candidate['name'])
